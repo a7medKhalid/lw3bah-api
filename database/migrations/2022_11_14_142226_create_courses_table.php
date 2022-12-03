@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('title');
+            $table->string('description');
+
+            $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
         });
     }
 
