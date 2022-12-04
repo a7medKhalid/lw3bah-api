@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
 
+            $table->boolean('is_published')->default(false);
+
             $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
         });
     }

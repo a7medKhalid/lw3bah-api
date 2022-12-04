@@ -19,6 +19,8 @@ return new class extends Migration
 
             $table->string('title');
 
+            $table->integer('order')->default(1);
+
             $table->foreignId('course_id')->constrained();
         });
     }

@@ -16,6 +16,18 @@ return new class extends Migration
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('title')->nullable();
+            $table->string('body')->nullable();
+            $table->string('type');
+            $table->string('question_type')->nullable();
+            $table->string('content_type')->nullable();
+
+            $table->integer('order')->default(1);
+
+            $table->foreignId('lesson_id')->constrained();
+
+
         });
     }
 

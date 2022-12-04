@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('description');
+            $table->integer('order')->default(1);
 
             $table->foreignId('section_id')->constrained();
         });
