@@ -14,6 +14,7 @@ class AddSectionToCourse extends Controller
         $request->validate([
             'course_id' => 'required',
             'title' => 'required|string',
+            'order' => ['required', 'integer', 'min:1','unique:sections,order,NULL,_id,course_id,' . $request->course_id]
         ]);
 
         //authorize request
@@ -30,6 +31,7 @@ class AddSectionToCourse extends Controller
         //add section to course
         $section = $course->sections()->create([
             'title' => $request->title,
+            'order' => $request->order
         ]);
 
         $course->save();

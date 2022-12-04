@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,7 @@ class CreateNewCourseTest extends TestCase
     public function test_teacher_can_create_course()
     {
         $user = User::factory()->create([
-            'role' => 'teacher'
+            'role' => UserRoleEnum::teacher
         ]);
 
         $response = $this->actingAs($user)->post('/api/create-new-course', [

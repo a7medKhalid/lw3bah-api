@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\UserRoleEnum;
 use App\Models\Course;
 use App\Models\Tag;
 use App\Models\User;
@@ -16,7 +17,7 @@ class AddTagsToCourseTest extends TestCase
     public function test_teacher_can_add_tags_to_course()
     {
         $user = User::factory()->create([
-            'role' => 'teacher',
+            'role' =>UserRoleEnum::teacher
         ]);
 
         $course = Course::factory()->create([

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\UserRoleEnum;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -17,7 +18,7 @@ class AddSectionToCourseTest extends TestCase
 
        $user = User::factory()->create(
               [
-                'role' => 'teacher'
+                'role' => UserRoleEnum::teacher
               ]
          );
 
@@ -30,6 +31,7 @@ class AddSectionToCourseTest extends TestCase
        $response = $this->post('/api/add-section-to-course', [
            'course_id' => $course->_id,
            'title' => 'Section 1',
+           'order' => 1
        ]);
 
        $response->assertStatus(201);
@@ -43,7 +45,7 @@ class AddSectionToCourseTest extends TestCase
    {
        $user = User::factory()->create(
               [
-                'role' => 'teacher'
+                'role' => UserRoleEnum::teacher
               ]
          );
 
@@ -54,6 +56,7 @@ class AddSectionToCourseTest extends TestCase
        $response = $this->post('/api/add-section-to-course', [
            'course_id' => $course->_id,
            'title' => 'Section 1',
+           'order' => 1
        ]);
 
        $response->assertStatus(403);

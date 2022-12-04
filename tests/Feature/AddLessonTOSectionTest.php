@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\UserRoleEnum;
 use App\Models\Course;
 use App\Models\Section;
 use App\Models\User;
@@ -15,7 +16,7 @@ class AddLessonTOSectionTest extends TestCase
     {
 
         $user = User::factory()->create([
-            'role' => 'teacher',
+            'role' => UserRoleEnum::teacher
         ]);
 
         $course = Course::factory()->create([
@@ -36,6 +37,7 @@ class AddLessonTOSectionTest extends TestCase
             'section_id' => $section->_id,
             'title' => 'Lesson 1',
             'description' => 'Description 1',
+            'order' => 1,
         ]);
 
         $response->assertStatus(201);
@@ -70,6 +72,7 @@ class AddLessonTOSectionTest extends TestCase
             'section_id' => $section->_id,
             'title' => 'Lesson 1',
             'description' => 'Description 1',
+            'order' => 1,
         ]);
 
         $response->assertStatus(403);
