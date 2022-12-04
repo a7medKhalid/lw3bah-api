@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddLessonTOSection;
 use App\Http\Controllers\AddSectionToCourse;
 use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
@@ -25,9 +26,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //authenticated routes
 Route::middleware('auth:sanctum')->group(function () {
 
+    //teacher routes
     Route::post('create-new-course', CreateNewCourse::class);
     Route::post('add-tags-to-course', AddTagsToCourse::class);
     Route::post('add-section-to-course', AddSectionToCourse::class);
+    Route::post('add-lesson-to-section', AddLessonTOSection::class);
 });
 
 

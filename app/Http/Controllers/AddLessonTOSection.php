@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
-class AddSectionToCourse extends Controller
+class AddLessonTOSection extends Controller
 {
 
     public function __invoke(Request $request)
     {
         //validate request
         $request->validate([
-            'course_id' => 'required',
+            'section_id' => 'required',
             'title' => 'required|string',
+            'description' => 'required|string',
         ]);
 
         //authorize request
-        $course = Course::find($request->course_id);
-
+        $section = Section::find($request->section_id);
+        $course = $section->course;
         $user = $request->user();
 
         if(!$user->can('update', $course)){
@@ -27,13 +28,12 @@ class AddSectionToCourse extends Controller
             ], 403);
         }
 
-        //add section to course
-        $section = $course->sections()->create([
+        //create lesson
+        $lesson = $section->lessons()->create([
             'title' => $request->title,
+            'description' => $request->description,
         ]);
 
-        $course->save();
-
-        return $section;
+        return $lesson;
     }
 }

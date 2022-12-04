@@ -32,7 +32,7 @@ class AddSectionToCourseTest extends TestCase
            'title' => 'Section 1',
        ]);
 
-       $response->assertStatus(200);
+       $response->assertStatus(201);
 
        $this->assertDatabaseHas('sections', [
            'title' => 'Section 1',
