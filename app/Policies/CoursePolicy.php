@@ -18,7 +18,7 @@ class CoursePolicy
 
     public function update(User $user, Course $course)
     {
-        return $user->role === 'teacher' && $user->_id === $course->user_id;
+        return $user->role === 'teacher' && $user->_id === $course->teacher_id;
     }
 
 }

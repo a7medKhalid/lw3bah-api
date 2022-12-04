@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddSectionToCourse;
 use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('create-new-course', CreateNewCourse::class);
     Route::post('add-tags-to-course', AddTagsToCourse::class);
+    Route::post('add-section-to-course', AddSectionToCourse::class);
 });
 
 
