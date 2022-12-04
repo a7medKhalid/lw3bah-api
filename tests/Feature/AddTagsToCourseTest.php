@@ -5,20 +5,22 @@ namespace Tests\Feature;
 use App\Models\Course;
 use App\Models\Tag;
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AddTagsToCourseTest extends TestCase
 {
-public function test_teacher_can_add_tags_to_course()
+
+    public function test_teacher_can_add_tags_to_course()
     {
         $user = User::factory()->create([
             'role' => 'teacher',
         ]);
 
         $course = Course::factory()->create([
-            'user_id' => $user->_id,
+            'teacher_id' => $user->_id,
         ]);
 
 
