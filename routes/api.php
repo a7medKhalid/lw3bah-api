@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//hello world
+Route::get('/hello', function () {
+    return 'Hello World';
+});
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
