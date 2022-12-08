@@ -18,4 +18,11 @@ class Slide extends Model
         'content_type' => ContentTypeEnum::class,
     ];
 
+    public function media(){
+        return $this->hasMany(Media::class);
+    }
+
+    public function lesson(){
+        return $this->belongsTo(Lesson::class);
+    }
 }

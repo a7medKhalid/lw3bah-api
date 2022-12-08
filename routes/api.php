@@ -7,6 +7,7 @@ use App\Http\Controllers\AddSectionToCourse;
 use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
 use App\Http\Controllers\PublishCourse;
+use App\Http\Controllers\UpdateContentSLide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +23,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //hello world
-Route::get('/hello', function () {
-    return 'Hello World';
-});
-
-Route::post('hello', function (Request $request) {
-    return 'Hello ' . $request->name;
-});
+//
+//Route::post('hello', function (Request $request) {
+//    return 'Hello ' . $request->name;
+//});
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -44,6 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('add-section-to-course', AddSectionToCourse::class);
     Route::post('add-lesson-to-section', AddLessonTOSection::class);
     Route::post('add-content-to-lesson', AddContentToLesson::class);
+    Route::post('update-content-slide', UpdateContentSLide::class);
     Route::post('add-question-to-lesson', AddQustionToLesson::class);
     Route::post('publish-course', PublishCourse::class);
 });
