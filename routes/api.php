@@ -5,6 +5,7 @@ use App\Http\Controllers\AddLessonTOSection;
 use App\Http\Controllers\AddSectionToCourse;
 use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
+use App\Http\Controllers\PublishCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('add-section-to-course', AddSectionToCourse::class);
     Route::post('add-lesson-to-section', AddLessonTOSection::class);
     Route::post('add-content-to-lesson', AddContentToLesson::class);
+    Route::post('publish-course', PublishCourse::class);
 });
 
 
