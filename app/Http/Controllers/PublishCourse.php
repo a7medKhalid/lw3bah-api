@@ -21,7 +21,11 @@ class PublishCourse extends Controller
         $course = Course::find($request->course_id);
 
         //Authorize request
-        $user->can('update', $course);
+        if(!$user->can('update', $course)){
+            return response()->json([
+                'message' => 'You are not allowed to update this course'
+            ], 403);
+        }
 
         //publish course
         $course->is_published = $request->publish;
