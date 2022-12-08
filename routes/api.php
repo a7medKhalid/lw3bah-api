@@ -26,6 +26,10 @@ Route::get('/hello', function () {
     return 'Hello World';
 });
 
+Route::post('hello', function (Request $request) {
+    return 'Hello ' . $request->name;
+});
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
