@@ -15,6 +15,8 @@ use App\Http\Controllers\TeacherViewLessonDetails;
 use App\Http\Controllers\TeacherViewLessons;
 use App\Http\Controllers\TeacherViewSectionDetails;
 use App\Http\Controllers\TeacherViewSections;
+use App\Http\Controllers\TeacherViewSlideDetails;
+use App\Http\Controllers\TeacherViewSlides;
 use App\Http\Controllers\UpdateContentSLide;
 use App\Http\Controllers\UpdateCourseDetails;
 use App\Http\Controllers\UpdateLessonDetails;
@@ -79,6 +81,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('delete-lesson', DeleteLesson::class);
 
     //slide
+    Route::get('teacher-view-slide-details', TeacherViewSlideDetails::class);
+    Route::get('teacher-view-slides', TeacherViewSlides::class);
+
     Route::post('add-content-to-lesson', AddContentToLesson::class);
     Route::post('update-content-slide', UpdateContentSLide::class);
 
