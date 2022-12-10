@@ -9,6 +9,7 @@ use App\Http\Controllers\CreateNewCourse;
 use App\Http\Controllers\DeleteCourse;
 use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
+use App\Http\Controllers\DeleteSlide;
 use App\Http\Controllers\PublishCourse;
 use App\Http\Controllers\UpdateContentSLide;
 use App\Http\Controllers\UpdateCourseDetails;
@@ -46,21 +47,26 @@ Route::middleware('auth:sanctum')->group(function () {
     //course
     Route::post('create-new-course', CreateNewCourse::class);
     Route::post('add-tags-to-course', AddTagsToCourse::class);
-    Route::post('add-section-to-course', AddSectionToCourse::class);
     Route::post('publish-course', PublishCourse::class);
     Route::post('update-course-details', UpdateCourseDetails::class);
     Route::post('delete-course', DeleteCourse::class);
 
     //section
-    Route::post('add-lesson-to-section', AddLessonTOSection::class);
+    Route::post('add-section-to-course', AddSectionToCourse::class);
     Route::post('delete-section', DeleteSection::class);
 
     //lesson
+    Route::post('add-lesson-to-section', AddLessonTOSection::class);
+    Route::post('delete-lesson', DeleteLesson::class);
+
+    //slide
     Route::post('add-content-to-lesson', AddContentToLesson::class);
     Route::post('update-content-slide', UpdateContentSLide::class);
+
     Route::post('add-question-to-lesson', AddQustionToLesson::class);
     Route::post('update-question-slide', UpdateQuestionSlide::class);
-    Route::post('delete-lesson', DeleteLesson::class);
+
+    Route::post('delete-slide', DeleteSlide::class);
 });
 
 
