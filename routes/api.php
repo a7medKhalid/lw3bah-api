@@ -42,18 +42,24 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function () {
 
     //teacher routes
+
+    //course
     Route::post('create-new-course', CreateNewCourse::class);
     Route::post('add-tags-to-course', AddTagsToCourse::class);
     Route::post('add-section-to-course', AddSectionToCourse::class);
+    Route::post('publish-course', PublishCourse::class);
+    Route::post('update-course-details', UpdateCourseDetails::class);
+    Route::post('delete-course', DeleteCourse::class);
+
+    //section
     Route::post('add-lesson-to-section', AddLessonTOSection::class);
+    Route::post('delete-section', DeleteSection::class);
+
+    //lesson
     Route::post('add-content-to-lesson', AddContentToLesson::class);
     Route::post('update-content-slide', UpdateContentSLide::class);
     Route::post('add-question-to-lesson', AddQustionToLesson::class);
     Route::post('update-question-slide', UpdateQuestionSlide::class);
-    Route::post('publish-course', PublishCourse::class);
-    Route::post('update-course-details', UpdateCourseDetails::class);
-    Route::post('delete-course', DeleteCourse::class);
-    Route::post('delete-section', DeleteSection::class);
     Route::post('delete-lesson', DeleteLesson::class);
 });
 
