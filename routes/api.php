@@ -8,6 +8,7 @@ use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
 use App\Http\Controllers\PublishCourse;
 use App\Http\Controllers\UpdateContentSLide;
+use App\Http\Controllers\UpdateQuestionSlide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('add-content-to-lesson', AddContentToLesson::class);
     Route::post('update-content-slide', UpdateContentSLide::class);
     Route::post('add-question-to-lesson', AddQustionToLesson::class);
+    Route::post('update-question-slide', UpdateQuestionSlide::class);
     Route::post('publish-course', PublishCourse::class);
 });
 
