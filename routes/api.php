@@ -15,6 +15,7 @@ use App\Http\Controllers\UpdateContentSLide;
 use App\Http\Controllers\UpdateCourseDetails;
 use App\Http\Controllers\UpdateLessonDetails;
 use App\Http\Controllers\UpdateQuestionSlide;
+use App\Http\Controllers\UpdateSectionDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //section
     Route::post('add-section-to-course', AddSectionToCourse::class);
+    Route::post('update-section-details', UpdateSectionDetails::class);
     Route::post('delete-section', DeleteSection::class);
 
     //lesson
