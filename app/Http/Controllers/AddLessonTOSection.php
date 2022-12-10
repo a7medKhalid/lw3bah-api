@@ -15,7 +15,7 @@ class AddLessonTOSection extends Controller
             'section_id' => 'required',
             'title' => 'required|string',
             'description' => 'required|string',
-            'order' => ['required', 'integer', 'min:1', 'unique:lessons,order,NULL,_id,section_id,' . $request->section_id]
+//            'order' => ['required', 'integer', 'min:1', 'unique:lessons,order,NULL,_id,section_id,' . $request->section_id]
         ]);
 
         //authorize request
@@ -33,7 +33,7 @@ class AddLessonTOSection extends Controller
         $lesson = $section->lessons()->create([
             'title' => $request->title,
             'description' => $request->description,
-            'order' => $request->order,
+            'order' => $section->lessons()->count() + 1,
         ]);
 
         return $lesson;

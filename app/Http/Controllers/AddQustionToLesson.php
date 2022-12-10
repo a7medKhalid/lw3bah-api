@@ -16,7 +16,7 @@ class AddQustionToLesson extends Controller
         $request->validate([
             'lesson_id' => 'required',
             'type' => ['required', 'string', new Enum(QuestionTypeEnum::class)],
-            'order' => ['required', 'integer', 'min:1', 'unique:slides,order,NULL,_id,lesson_id,' . $request->lesson_id],
+//            'order' => ['required', 'integer', 'min:1', 'unique:slides,order,NULL,_id,lesson_id,' . $request->lesson_id],
         ]);
 
         //authorize request
@@ -37,7 +37,7 @@ class AddQustionToLesson extends Controller
             'type' => 'question',
             'lesson_id' => $request->lesson_id,
             'question_type' => $request->type,
-            'order' => $request->order,
+            'order' => $lesson->slides()->count() + 1,
         ]);
 
         return $slide;

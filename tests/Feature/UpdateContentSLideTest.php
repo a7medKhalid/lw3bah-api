@@ -42,6 +42,7 @@ class UpdateContentSLideTest extends TestCase
             'slide_id' => $slide->_id,
             'title' => 'updated slide title',
             'body' => 'updated slide body',
+            'order' => 1,
         ]);
 
         $response->assertStatus(200);
@@ -88,6 +89,7 @@ class UpdateContentSLideTest extends TestCase
             'media_type' => 'video',
             'media' => 'https://www.youtube.com/watch?v=9bZkp7q19f0',
             'body' => 'updated slide body',
+            'order' => 1,
         ]);
 
         $response->assertStatus(200);

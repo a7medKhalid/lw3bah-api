@@ -39,7 +39,8 @@ class UpdateQuestionSlideTest extends TestCase
 
         $response = $this->actingAs($user)->post('/api/update-question-slide', [
             'slide_id' => $slide->_id,
-            'title' => 'What is the capital of France?',
+            'title' => 'What is the capital of Moroco?',
+            'order' => 1,
             'answers' => [
                 [
                     'body' => 'Paris',
@@ -64,7 +65,7 @@ class UpdateQuestionSlideTest extends TestCase
 
         $this->assertDatabaseHas('slides', [
             '_id' => $slide->_id,
-            'title' => 'What is the capital of France?',
+            'title' => 'What is the capital of Moroco?',
         ]);
 
         $this->assertDatabaseHas('answers', [

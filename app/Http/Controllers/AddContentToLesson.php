@@ -18,7 +18,7 @@ class AddContentToLesson extends Controller
         $request->validate([
             'lesson_id' => 'required',
             'type' => ['required', 'string', new Enum(ContentTypeEnum::class)],
-            'order' => ['required', 'integer', 'min:1', 'unique:slides,order,NULL,_id,lesson_id,' . $request->lesson_id],
+//            'order' => ['required', 'integer', 'min:1', 'unique:slides,order,NULL,_id,lesson_id,' . $request->lesson_id],
         ]);
 
         //authorize request
@@ -39,7 +39,7 @@ class AddContentToLesson extends Controller
             'type' => 'content',
             'lesson_id' => $request->lesson_id,
             'content_type' => $request->type,
-            'order' => $request->order,
+            'order' => $lesson->slides()->count() + 1,
         ]);
 
 
