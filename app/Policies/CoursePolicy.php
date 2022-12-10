@@ -22,4 +22,9 @@ class CoursePolicy
         return $user->role === UserRoleEnum::teacher && $user->_id === $course->teacher_id;
     }
 
+    public function delete(User $user, Course $course)
+    {
+        return $user->role === UserRoleEnum::teacher && $user->_id === $course->teacher_id;
+    }
+
 }
