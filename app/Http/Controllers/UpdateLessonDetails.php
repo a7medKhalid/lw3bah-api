@@ -32,10 +32,13 @@ class UpdateLessonDetails extends Controller
             ], 403);
         }
 
-        $maxOrder = $lesson->slides()->max('order')??1;
+        $maxOrder = $lesson->slides()->max('order');
+        if ($maxOrder == null){
+            $maxOrder = 1;
+        }
 
         $request->validate([
-            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder, 'unique:lessons,order,NULL,_id,section_id,' . $request->section_id],
+            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder],
             ]);
 
 

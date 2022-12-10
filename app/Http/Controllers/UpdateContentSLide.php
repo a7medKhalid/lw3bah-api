@@ -14,10 +14,13 @@ class UpdateContentSLide extends Controller
     public function __invoke(Request $request)
     {
         //validate request
-        $maxOrder = Slide::where('lesson_id', $request->lesson_id)->max('order')??1;
+        $maxOrder = Slide::where('lesson_id', $request->lesson_id)->max('order');
+        if ($maxOrder == null) {
+            $maxOrder = 1;
+        }
         $request->validate([
             'slide_id' => 'required',
-            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder, 'unique:slides,order,' . $request->slide_id . ',_id,lesson_id,' . $request->lesson_id],
+            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder],
         ]);
 
         //get slide
