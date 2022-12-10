@@ -31,7 +31,7 @@ class UpdateLessonDetailsTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->post('/api/update-lesson-details/', [
-            'lesson_id' => $lesson->id,
+            'lesson_id' => $lesson->_id,
             'title' => 'updated title',
             'description' => 'updated description',
             'order' => 1,
@@ -40,7 +40,7 @@ class UpdateLessonDetailsTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('lessons', [
-            'id' => $lesson->id,
+            '_id' => $lesson->_id,
             'title' => 'updated title',
             'description' => 'updated description',
         ]);
