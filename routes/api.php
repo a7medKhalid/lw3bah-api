@@ -7,6 +7,7 @@ use App\Http\Controllers\AddSectionToCourse;
 use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
 use App\Http\Controllers\DeleteCourse;
+use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
 use App\Http\Controllers\PublishCourse;
 use App\Http\Controllers\UpdateContentSLide;
@@ -53,6 +54,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('update-course-details', UpdateCourseDetails::class);
     Route::post('delete-course', DeleteCourse::class);
     Route::post('delete-section', DeleteSection::class);
+    Route::post('delete-lesson', DeleteLesson::class);
 });
 
 
