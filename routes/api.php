@@ -11,11 +11,17 @@ use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
 use App\Http\Controllers\DeleteSlide;
 use App\Http\Controllers\PublishCourse;
+use App\Http\Controllers\TeacherViewLessonDetails;
+use App\Http\Controllers\TeacherViewLessons;
+use App\Http\Controllers\TeacherViewSectionDetails;
+use App\Http\Controllers\TeacherViewSections;
 use App\Http\Controllers\UpdateContentSLide;
 use App\Http\Controllers\UpdateCourseDetails;
 use App\Http\Controllers\UpdateLessonDetails;
 use App\Http\Controllers\UpdateQuestionSlide;
 use App\Http\Controllers\UpdateSectionDetails;
+use App\Http\Controllers\ViewMyCourse;
+use App\Http\Controllers\ViewMyCourses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +53,9 @@ Route::middleware('auth:sanctum')->group(function () {
     //teacher routes
 
     //course
+    Route::get('view-my-course',ViewMyCourse::class);
+    Route::get('view-my-courses',ViewMyCourses::class);
+
     Route::post('create-new-course', CreateNewCourse::class);
     Route::post('add-tags-to-course', AddTagsToCourse::class);
     Route::post('publish-course', PublishCourse::class);
@@ -54,11 +63,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('delete-course', DeleteCourse::class);
 
     //section
+    Route::get('teacher-view-section-details', TeacherViewSectionDetails::class);
+    Route::get('teacher-view-sections', TeacherViewSections::class);
+
     Route::post('add-section-to-course', AddSectionToCourse::class);
     Route::post('update-section-details', UpdateSectionDetails::class);
     Route::post('delete-section', DeleteSection::class);
 
     //lesson
+    Route::get('teacher-view-lesson-details', TeacherViewLessonDetails::class);
+    Route::get('teacher-view-lessons', TeacherViewLessons::class);
+
     Route::post('add-lesson-to-section', AddLessonTOSection::class);
     Route::post('update-lesson-details', UpdateLessonDetails::class);
     Route::post('delete-lesson', DeleteLesson::class);

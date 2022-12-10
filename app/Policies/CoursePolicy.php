@@ -11,6 +11,11 @@ class CoursePolicy
 {
     use HandlesAuthorization;
 
+    public function viewAsTeacher(User $user, Course $course)
+    {
+        return $user->role === UserRoleEnum::teacher && $user->_id === $course->teacher_id;
+    }
+
     public function create(User $user)
     {
 
