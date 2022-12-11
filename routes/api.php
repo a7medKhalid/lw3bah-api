@@ -6,6 +6,7 @@ use App\Http\Controllers\AddQustionToLesson;
 use App\Http\Controllers\AddSectionToCourse;
 use App\Http\Controllers\AddTagsToCourse;
 use App\Http\Controllers\CreateNewCourse;
+use App\Http\Controllers\CreateToken;
 use App\Http\Controllers\DeleteCourse;
 use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
@@ -38,11 +39,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//hello world
-//
-//Route::post('hello', function (Request $request) {
-//    return 'Hello ' . $request->name;
-//});
+Route::post('/create-token', CreateToken::class);
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -96,3 +93,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 //guest routes
 
+include __DIR__ . '/auth.php';
