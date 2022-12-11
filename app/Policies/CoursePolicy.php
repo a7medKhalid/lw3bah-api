@@ -11,6 +11,23 @@ class CoursePolicy
 {
     use HandlesAuthorization;
 
+    public function view(User $user, Course $course)
+    {
+        if($user->role === UserRoleEnum::admin){
+            return true;
+        }
+
+        if($user->role === UserRoleEnum::teacher){
+            return $user->_id === $course->teacher_id;
+        }
+
+        if($user->role == UserRoleEnum::student){
+            return $course->is_published;
+        }
+
+        return false;
+    }
+
     public function viewAsTeacher(User $user, Course $course)
     {
         return $user->role === UserRoleEnum::teacher && $user->_id === $course->teacher_id;

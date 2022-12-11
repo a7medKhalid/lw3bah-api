@@ -11,7 +11,10 @@ use App\Http\Controllers\DeleteCourse;
 use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
 use App\Http\Controllers\DeleteSlide;
+use App\Http\Controllers\GetPublishedTags;
 use App\Http\Controllers\PublishCourse;
+use App\Http\Controllers\StudentViewCourse;
+use App\Http\Controllers\StudentViewCourses;
 use App\Http\Controllers\TeacherViewLessonDetails;
 use App\Http\Controllers\TeacherViewLessons;
 use App\Http\Controllers\TeacherViewSectionDetails;
@@ -45,11 +48,14 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//shared routes
+Route::get('get-published-tags', GetPublishedTags::class);
 
-//authenticated routes
+
+
+//teacher authenticated routes
 Route::middleware('auth:sanctum')->group(function () {
 
-    //teacher routes
 
     //course
     Route::get('view-my-course',ViewMyCourse::class);
@@ -89,6 +95,16 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('delete-slide', DeleteSlide::class);
 });
+
+    //student authenticated routes
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('student-view-courses', StudentViewCourses::class);
+        Route::get('student-view-course', StudentViewCourse::class);
+
+    });
+
+
+
 
 
 //guest routes

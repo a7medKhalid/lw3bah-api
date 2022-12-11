@@ -11,4 +11,9 @@ class Tag extends Model
 
     protected $guarded = [];
 
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_has_tags');
+    }
+
 }
