@@ -11,6 +11,7 @@ use App\Http\Controllers\DeleteCourse;
 use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
 use App\Http\Controllers\DeleteSlide;
+use App\Http\Controllers\FinishLesson;
 use App\Http\Controllers\GetPublishedTags;
 use App\Http\Controllers\PublishCourse;
 use App\Http\Controllers\StudentViewCourse;
@@ -97,11 +98,13 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
     //student authenticated routes
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::get('student-view-courses', StudentViewCourses::class);
-        Route::get('student-view-course', StudentViewCourse::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('student-view-courses', StudentViewCourses::class);
+    Route::get('student-view-course', StudentViewCourse::class);
 
-    });
+    Route::post('finish-lesson', FinishLesson::class);
+
+});
 
 
 
