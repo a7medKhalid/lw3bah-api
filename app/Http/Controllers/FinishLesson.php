@@ -31,7 +31,6 @@ class FinishLesson extends Controller
                 'finished_sections' => [],
                 'is_finished' => false,
                 'is_valid' => true,
-                'user_id' => $user->_id,
             ]);
         }
 

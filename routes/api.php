@@ -22,6 +22,7 @@ use App\Http\Controllers\TeacherViewSectionDetails;
 use App\Http\Controllers\TeacherViewSections;
 use App\Http\Controllers\TeacherViewSlideDetails;
 use App\Http\Controllers\TeacherViewSlides;
+use App\Http\Controllers\UnEnrollFromCourse;
 use App\Http\Controllers\UpdateContentSLide;
 use App\Http\Controllers\UpdateCourseDetails;
 use App\Http\Controllers\UpdateLessonDetails;
@@ -103,6 +104,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('student-view-course', StudentViewCourse::class);
 
     Route::post('finish-lesson', FinishLesson::class);
+    Route::post('unenroll-from-course', UnEnrollFromCourse::class);
 
 });
 
