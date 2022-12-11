@@ -17,7 +17,7 @@ class TeacherViewSections extends Controller
 
         //authorize request
         $user = $request->user();
-        $course = Course::find($request->course_id);
+        $course = Course::where('_id',$request->course_id)->with('sections.lessons')->first();
 
         if(!$user->can('viewAsTeacher', $course)){
             return response()->json([
@@ -26,7 +26,7 @@ class TeacherViewSections extends Controller
         }
 
         //return sections
-        return $course->sections;
+        return $course;
 
     }
 }
