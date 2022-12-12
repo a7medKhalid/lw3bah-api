@@ -98,10 +98,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('delete-slide', DeleteSlide::class);
 });
 
-    //student authenticated routes
+    //student  routes
+
+Route::get('student-view-courses', StudentViewCourses::class);
+Route::get('student-view-course', StudentViewCourse::class);
+
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('student-view-courses', StudentViewCourses::class);
-    Route::get('student-view-course', StudentViewCourse::class);
 
     Route::post('finish-lesson', FinishLesson::class);
     Route::post('unenroll-from-course', UnEnrollFromCourse::class);

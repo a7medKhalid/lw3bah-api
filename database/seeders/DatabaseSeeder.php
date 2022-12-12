@@ -121,6 +121,25 @@ class DatabaseSeeder extends Seeder
             'is_correct' => false,
         ]);
 
+        $lesson2 = $section->lessons()->create([
+            'title' => 'Introduction to PHP',
+            'description' => 'This is the introduction to PHP lesson',
+        ]);
+
+        $lesson3 = $section->lessons()->create([
+            'title' => 'Introduction to HTML',
+            'description' => 'This is the introduction to HTML lesson',
+        ]);
+
+        //enroll student in course
+        $student->enrollments()->create([
+            'course_id' => $course->_id,
+            'finished_lessons' => [$lesson2->_id],
+        ]);
+
+
+
+
 
         Tag::factory(10)->create();
 
