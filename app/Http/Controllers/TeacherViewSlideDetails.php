@@ -20,8 +20,9 @@ class TeacherViewSlideDetails extends Controller
         //authorize request
         $user = $request->user();
         $slide = Slide::find($request->slide_id);
+        $course = $slide->lesson->section->course;
 
-        if(!$user->can('viewAsTeacher', $slide)){
+        if(!$user->can('viewAsTeacher', $course)){
             return response()->json([
                 'message' => 'You are not allowed to view this slide'
             ], 403);
