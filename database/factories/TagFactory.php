@@ -17,7 +17,9 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word,
+            'times_used' => $this->faker->numberBetween(0, 100),
+            'is_published' => $this->faker->boolean,
         ];
     }
 }

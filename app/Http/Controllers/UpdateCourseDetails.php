@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class UpdateCourseDetails extends Controller
@@ -13,8 +14,10 @@ class UpdateCourseDetails extends Controller
         //validate request
         $request->validate([
             'course_id' => 'required',
-            'course_name' => 'required|string',
-            'course_description' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'tags' => 'required|array',
+            'tags.*' => 'required|string',
         ]);
 
         //authorize request
@@ -32,6 +35,22 @@ class UpdateCourseDetails extends Controller
             'title' => $request->course_name,
             'description' => $request->course_description,
         ]);
+
+        //get tags if they exist or create them
+        $tags = collect($request->tags)->map(function($tag){
+            $tag = Tag::firstOrCreate(['name' => $tag]);
+            $tag->increment('times_used');
+            $tag->save();
+            return $tag;
+        });
+
+        //attach tags to course
+
+        $tags = $tags->pluck('_id')->toArray();
+        $course->tags()->sync($tags);
+
+
+        $course->save();
 
         return $course;
     }

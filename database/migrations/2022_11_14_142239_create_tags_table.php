@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->string('name');
             $table->integer('times_used')->default(0);
+            $table->boolean('is_published')->default(true);
         });
     }
 
