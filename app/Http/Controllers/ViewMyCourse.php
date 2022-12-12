@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class ViewMyCourse extends Controller
@@ -16,7 +17,8 @@ class ViewMyCourse extends Controller
 
         //authorize request
         $user = $request->user();
-        $course = $user->courses()->find($request->course_id);
+        $course = Course::where('_id',$request->course_id)->where('teacher_id', $user->_id)->with('tags')->first();
+
 
         if(!$course){
             return response()->json([
