@@ -22,6 +22,7 @@ class CreateNewCourseTest extends TestCase
         $response = $this->actingAs($user)->post('/api/create-new-course', [
             'title' => 'test title',
             'description' => 'test description',
+            'tags' => ['tag1', 'tag2'],
         ]);
 
         $response->assertStatus(201);
@@ -45,6 +46,7 @@ class CreateNewCourseTest extends TestCase
         $response = $this->actingAs($user)->post('/api/create-new-course', [
             'title' => 'test title',
             'description' => 'test description',
+            'tags' => ['tag1', 'tag2'],
         ]);
 
         $response->assertStatus(403);

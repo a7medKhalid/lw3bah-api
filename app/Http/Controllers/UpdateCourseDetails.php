@@ -32,8 +32,8 @@ class UpdateCourseDetails extends Controller
 
         //update course details
         $course->update([
-            'title' => $request->course_name,
-            'description' => $request->course_description,
+            'title' => $request->title,
+            'description' => $request->description,
         ]);
 
         //get tags if they exist or create them

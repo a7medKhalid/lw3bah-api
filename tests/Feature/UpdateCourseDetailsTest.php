@@ -22,8 +22,9 @@ class UpdateCourseDetailsTest extends TestCase
 
     $response = $this->actingAs($user)->post('api/update-course-details', [
          'course_id' => $course->_id,
-         'course_name' => 'Updated Course Name',
-         'course_description' => 'Updated Course Description',
+         'title' => 'Updated Course Name',
+         'description' => 'Updated Course Description',
+            'tags' => ['tag1', 'tag2'],
      ]);
 
     $response->assertStatus(200);
