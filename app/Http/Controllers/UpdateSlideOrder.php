@@ -41,9 +41,11 @@ class UpdateSlideOrder extends Controller
         }
 
         //update slide order
-        $slide->update([
+        $slide = $slide->update([
             'order' => $request->order,
         ]);
+
+        $slide->save();
 
         return $slide;
 
