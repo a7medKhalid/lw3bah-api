@@ -22,7 +22,7 @@ class DeleteCourseTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertDatabaseMissing('courses', [
-            'id' => $course->_id,
+            '_id' => $course->_id,
         ]);
     }
 }

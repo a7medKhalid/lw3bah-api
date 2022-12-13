@@ -37,7 +37,7 @@ class TeacherViewSlideDetails extends Controller
 
             if ($slide->content_type == ContentTypeEnum::mediaAndText){
                 $slide = [
-                    'id' => $slide->_id,
+                    '_id' => $slide->_id,
                     'type' => $slide->type,
                     'content_type' => $slide->content_type,
                     'order' => $slide->order,
@@ -51,7 +51,7 @@ class TeacherViewSlideDetails extends Controller
         }elseif ($slide->type == 'question'){
             if ($slide->question_type == QuestionTypeEnum::multipleChoice){
                 $slide = [
-                    'id' => $slide->_id,
+                    '_id' => $slide->_id,
                     'type' => $slide->type,
                     'question_type' => $slide->question_type,
                     'order' => $slide->order,
@@ -62,7 +62,7 @@ class TeacherViewSlideDetails extends Controller
             }
             if ($slide->question_type == QuestionTypeEnum::trueFalse){
                 $slide = [
-                    'id' => $slide->_id,
+                    '_id' => $slide->_id,
                     'type' => $slide->type,
                     'question_type' => $slide->question_type,
                     'order' => $slide->order,
