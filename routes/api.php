@@ -12,6 +12,7 @@ use App\Http\Controllers\DeleteLesson;
 use App\Http\Controllers\DeleteSection;
 use App\Http\Controllers\DeleteSlide;
 use App\Http\Controllers\FinishLesson;
+use App\Http\Controllers\GetLessonSlides;
 use App\Http\Controllers\GetPublishedTags;
 use App\Http\Controllers\PublishCourse;
 use App\Http\Controllers\StudentViewCourse;
@@ -110,6 +111,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('finish-lesson', FinishLesson::class);
     Route::post('unenroll-from-course', UnEnrollFromCourse::class);
+
+    Route::get('get-lesson-slides', GetLessonSlides::class);
 
 });
 

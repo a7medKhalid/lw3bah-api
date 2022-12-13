@@ -18,6 +18,6 @@ class Lesson extends Model
 
     public function slides()
     {
-        return $this->hasMany(Slide::class);
+        return $this->hasMany(Slide::class)->orderBy('order');
     }
 }
