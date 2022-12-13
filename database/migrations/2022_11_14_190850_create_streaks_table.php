@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('streaks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('course_id')->constrained();
         });
     }
 

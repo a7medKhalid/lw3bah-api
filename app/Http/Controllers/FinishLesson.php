@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use App\Models\Streak;
 use Illuminate\Http\Request;
 
 class FinishLesson extends Controller
@@ -64,6 +65,11 @@ class FinishLesson extends Controller
 
         $user->points += $lessonPoints->sum();
         $user->save();
+
+        //add streak for user
+        $streak = $user->streaks()->create([
+            'course_id' => $course->_id,
+        ]);
 
         return $enrollment;
 

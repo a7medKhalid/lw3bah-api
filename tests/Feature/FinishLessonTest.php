@@ -71,5 +71,10 @@ class FinishLessonTest extends TestCase
             '_id' => $student->_id,
             'points' => 10,
         ]);
+
+        $this->assertDatabaseHas('streaks', [
+            'user_id' => $student->_id,
+            'course_id' => $course->_id,
+        ]);
     }
 }

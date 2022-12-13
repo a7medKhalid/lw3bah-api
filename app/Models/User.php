@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function enrollments(){
         return $this->belongsToMany(Enrollment::class,'enrollments','user_id');
     }
+
+    public function streaks(){
+        return $this->hasMany(Streak::class, 'user_id')->sortByDesc('created_at');
+    }
 }
