@@ -92,8 +92,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('update-slide-order', UpdateSlideOrder::class);
 
-
-
     Route::post('add-content-to-lesson', AddContentToLesson::class);
     Route::post('update-content-slide', UpdateContentSLide::class);
 
