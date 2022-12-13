@@ -55,6 +55,6 @@ class User extends Authenticatable
     }
 
     public function streaks(){
-        return $this->hasMany(Streak::class, 'user_id')->sortByDesc('created_at');
+        return $this->hasMany(Streak::class, 'user_id')->orderBy('created_at', 'desc');
     }
 }
