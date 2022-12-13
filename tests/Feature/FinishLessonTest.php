@@ -33,6 +33,20 @@ class FinishLessonTest extends TestCase
             'description' => 'Test Description',
         ]);
 
+        $lesson->slides()->create([
+            'title' => 'Test Slide',
+            'description' => 'Test Description',
+            'content' => 'Test Content',
+            'order' => 1,
+        ]);
+
+        $lesson->slides()->create([
+            'title' => 'Test Slide',
+            'description' => 'Test Description',
+            'content' => 'Test Content',
+            'order' => 2,
+        ]);
+
         $response = $this->actingAs($student)->postJson('/api/finish-lesson', [
             'lesson_id' => $lesson->_id,
         ]);
@@ -51,6 +65,11 @@ class FinishLessonTest extends TestCase
             'finished_lessons' => [$lesson->_id],
             'finished_sections' => [$section->_id],
             'is_finished' => true,
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            '_id' => $student->_id,
+            'points' => 10,
         ]);
     }
 }

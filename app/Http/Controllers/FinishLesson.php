@@ -52,6 +52,19 @@ class FinishLesson extends Controller
 
         $enrollment->save();
 
+        //count points and add it to user
+
+        $lessonPoints = $lesson->slides->map(function($slide){
+            if ($slide->type == 'question') {
+                return 10;
+            } else {
+                return 5;
+            }
+        });
+
+        $user->points += $lessonPoints->sum();
+        $user->save();
+
         return $enrollment;
 
 
