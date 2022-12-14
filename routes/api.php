@@ -29,6 +29,7 @@ use App\Http\Controllers\UnEnrollFromCourse;
 use App\Http\Controllers\UpdateContentSLide;
 use App\Http\Controllers\UpdateCourseDetails;
 use App\Http\Controllers\UpdateLessonDetails;
+use App\Http\Controllers\UpdateLessonOrder;
 use App\Http\Controllers\UpdateQuestionSlide;
 use App\Http\Controllers\UpdateSectionDetails;
 use App\Http\Controllers\UpdateSlideOrder;
@@ -81,12 +82,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('update-section-details', UpdateSectionDetails::class);
     Route::post('delete-section', DeleteSection::class);
 
+
     //lesson
     Route::get('teacher-view-lesson-details', TeacherViewLessonDetails::class);
     Route::get('teacher-view-lessons', TeacherViewLessons::class);
 
     Route::post('add-lesson-to-section', AddLessonTOSection::class);
     Route::post('update-lesson-details', UpdateLessonDetails::class);
+    Route::post('update-lesson-order', UpdateLessonOrder::class);
     Route::post('delete-lesson', DeleteLesson::class);
 
     //slide

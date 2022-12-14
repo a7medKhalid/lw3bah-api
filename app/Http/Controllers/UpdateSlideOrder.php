@@ -42,30 +42,33 @@ class UpdateSlideOrder extends Controller
 
 
 
-        //get slides
 
         $slides = $lesson->slides()->get()->toArray();
 
-        //swap slide place to new order
-        $slideWithUpdatedOrder = $slides[array_search($slide->_id, array_column($slides, '_id'))];
-        $slideToSwap = $slides[array_search($request->order, array_column($slides, 'order'))];
+        // get the slide that is being moved
+        $slideToMove = $lesson->slides()->where('_id', $request->slide_id)->first();
 
-        //remove slide with updated order
-        $slides = array_filter($slides, function($item) use ($slideWithUpdatedOrder){
-            return $item['_id'] != $slideWithUpdatedOrder['_id'];
-        });
+        // get the slide that is being moved to
+        $slideToMoveTo = $lesson->slides()->where('order', $request->order)->first();
 
-        //insert slide with updated order after slide to swap
-        array_splice($slides, array_search($slideToSwap['_id'], array_column($slides, '_id')) + 1, 0, [$slideWithUpdatedOrder]);
+        // get the index of the slide that is being moved
+        $slideToMoveIndex = array_search($slideToMove->_id, array_column($slides, '_id'));
 
-        //update order of all slides
-        foreach ($slides as $key => $slide){
+        // get the index of the slide that is being moved to
+        $slideToMoveToIndex = array_search($slideToMoveTo->_id, array_column($slides, '_id'));
+
+        // use splice to remove the slide that is being moved
+        $slideToMove = array_splice($slides, $slideToMoveIndex, 1);
+        // use splice to insert the slide that is being moved to the new position
+        array_splice($slides, $slideToMoveToIndex, 0, $slideToMove);
+
+        // loop through the slides and update the order
+        foreach ($slides as $key => $slide) {
             $slide = Slide::find($slide['_id']);
-            $slide->update([
-                'order' => $key + 1,
-            ]);
+            $slide->order = $key + 1;
             $slide->save();
         }
+
 
         return $lesson->slides()->get();
 
