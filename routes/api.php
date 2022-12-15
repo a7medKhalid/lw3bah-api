@@ -89,7 +89,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('add-lesson-to-section', AddLessonTOSection::class);
     Route::post('update-lesson-details', UpdateLessonDetails::class);
-//    Route::post('update-lesson-order', UpdateLessonOrder::class);
+    Route::post('update-lesson-order', UpdateLessonOrder::class);
     Route::post('delete-lesson', DeleteLesson::class);
 
     //slide
