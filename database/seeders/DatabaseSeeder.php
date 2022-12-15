@@ -137,6 +137,16 @@ class DatabaseSeeder extends Seeder
             'finished_lessons' => [$lesson2->_id],
         ]);
 
+        //add streak and points to user
+        $student->streaks()->create(
+            [
+                'course_id' => $course->_id,
+            ]
+        );
+
+        $student->points = 10;
+        $student->save();
+
 
 
 
