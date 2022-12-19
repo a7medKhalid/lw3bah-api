@@ -77,28 +77,28 @@ class DatabaseSeeder extends Seeder
             'type' => 'content',
             'content_type' => 'text',
             'order' => 1,
-            'content' => 'This is the first slide',
+            'body' => 'This is the first slide',
         ]);
 
         $slide = $lesson->slides()->create([
             'type' => 'content',
             'content_type' => 'text',
             'order' => 2,
-            'content' => 'This is the second slide',
+            'body' => 'This is the second slide',
         ]);
 
         $slide = $lesson->slides()->create([
             'type' => 'content',
             'content_type' => 'text',
             'order' => 3,
-            'content' => 'This is the third slide',
+            'body' => 'This is the third slide',
         ]);
 
         $slide = $lesson->slides()->create([
             'type' => 'question',
             'question_type' => 'multipleChoice',
             'order' => 4,
-            'content' => 'This is the fourth slide',
+            'body' => 'This is the fourth slide',
         ]);
 
         $answer = $slide->answers()->create([

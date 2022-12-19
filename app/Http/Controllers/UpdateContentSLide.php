@@ -45,7 +45,7 @@ class UpdateContentSLide extends Controller
         //validate request based on slide type
         if($slideType == 'text') {
             $request->validate([
-                'title' => 'nullable|string',
+                'title' => 'required|string',
                 'body' => 'required|string',
             ]);
         } else if($slideType == 'mediaAndText') {
