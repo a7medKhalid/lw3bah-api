@@ -48,6 +48,8 @@ class GetLessonSlides extends Controller
                 if ($slide->question_type == QuestionTypeEnum::multipleChoice) {
                     $slide = [
                         '_id' => $slide->_id,
+                        'title' => $slide->title,
+                        'body' => $slide->body,
                         'type' => $slide->type,
                         'question_type' => $slide->question_type,
                         'order' => $slide->order,
@@ -59,6 +61,8 @@ class GetLessonSlides extends Controller
                 if ($slide->question_type == QuestionTypeEnum::trueFalse) {
                     $slide = [
                         '_id' => $slide->_id,
+                        'title' => $slide->title,
+                        'body' => $slide->body,
                         'type' => $slide->type,
                         'question_type' => $slide->question_type,
                         'order' => $slide->order,
