@@ -105,6 +105,18 @@ class DatabaseSeeder extends Seeder
             'body' => 'This is the fourth slide',
         ]);
 
+        $slide5 = $lesson->slides()->create([
+            'type' => 'content',
+            'content_type' => 'mediaAndText',
+            'order' => 5,
+            'body' => 'This is the fifth slide',
+        ]);
+
+        $slide5->media()->create([
+            'type' => 'image',
+            'url' => 'https://picsum.photos/200/300',
+        ]);
+
         $answer = $slide->answers()->create([
             'body' => 'This is the first answer',
             'is_correct' => true,
