@@ -77,6 +77,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'content',
             'content_type' => 'text',
             'order' => 1,
+            'title' => 'this is title',
             'body' => 'This is the first slide',
         ]);
 
@@ -84,6 +85,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'content',
             'content_type' => 'text',
             'order' => 2,
+            'title' => 'this is title',
             'body' => 'This is the second slide',
         ]);
 
@@ -91,6 +93,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'content',
             'content_type' => 'text',
             'order' => 3,
+            'title' => 'this is title',
             'body' => 'This is the third slide',
         ]);
 
@@ -98,6 +101,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'question',
             'question_type' => 'multipleChoice',
             'order' => 4,
+            'title' => 'this is title',
             'body' => 'This is the fourth slide',
         ]);
 
