@@ -24,6 +24,18 @@ class GetLessonSlides extends Controller
 
         $slides = $lesson->slides;
 
+        $lessonPoints = $slides->map(function($slide){
+            if ($slide->type == 'question') {
+                return 10;
+            } else {
+                return 5;
+            }
+        });
+
+        $lesson->lessonPoints = $lessonPoints->sum();
+
+
+
         $slides = $slides->map(function ($slide) {
             if ($slide->type == 'content') {
                 if ($slide->content_type == ContentTypeEnum::text) {
@@ -75,18 +87,16 @@ class GetLessonSlides extends Controller
             return $slide;
         });
 
-        $lessonPoints = $slides->map(function($slide){
-            if ($slide->type == 'question') {
-                return 10;
-            } else {
-                return 5;
-            }
-        });
 
-        $slides->lessonPoints = $lessonPoints->sum();
+
+        $response = [
+            'lesson' => $lesson,
+            'slides' => $slides,
+        ];
+
 
         //return slides
 
-        return $slides;
+        return $response;
     }
 }
