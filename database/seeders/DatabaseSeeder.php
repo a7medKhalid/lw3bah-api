@@ -117,6 +117,30 @@ class DatabaseSeeder extends Seeder
             'url' => 'https://picsum.photos/200/300',
         ]);
 
+        $slide6 = $lesson->slides()->create([
+            'type' => 'content',
+            'content_type' => 'mediaAndText',
+            'order' => 6,
+            'body' => 'This is the sixth slide',
+        ]);
+
+        $slide6->media()->create([
+            'type' => 'video',
+            'url' => 'https://www.youtube.com/watch?v=9cKsq14Kfsw',
+        ]);
+
+        $slide7 = $lesson->slides()->create([
+            'type' => 'content',
+            'content_type' => 'mediaAndText',
+            'order' => 7,
+            'body' => 'This is the seventh slide',
+        ]);
+
+        $slide7->media()->create([
+            'type' => 'audio',
+            'url' => 'https://www.youtube.com/watch?v=9cKsq14Kfsw',
+        ]);
+
         $answer = $slide->answers()->create([
             'body' => 'This is the first answer',
             'is_correct' => true,
