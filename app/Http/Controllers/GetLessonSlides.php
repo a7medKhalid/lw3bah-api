@@ -75,6 +75,15 @@ class GetLessonSlides extends Controller
             return $slide;
         });
 
+        $lessonPoints = $slides->map(function($slide){
+            if ($slide->type == 'question') {
+                return 10;
+            } else {
+                return 5;
+            }
+        });
+
+        $slides->lessonPoints = $lessonPoints->sum();
 
         //return slides
 
