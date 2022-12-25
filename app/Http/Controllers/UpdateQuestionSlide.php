@@ -63,6 +63,9 @@ class UpdateQuestionSlide extends Controller
         if ($slideType == QuestionTypeEnum::multipleChoice) {
             $slide->title = $request->title;
 
+            $answers = $slide->answers;
+            $answers->delete();
+
             //create  answers
             $slide->answers()->create([
                 'body' => $request->answers[0]['body'],
@@ -83,6 +86,9 @@ class UpdateQuestionSlide extends Controller
 
         } else if ($slideType == QuestionTypeEnum::trueFalse) {
             $slide->title = $request->title;
+
+            $answers = $slide->answers;
+            $answers->delete();
 
             //create  answers
             $slide->answers()->create([
