@@ -11,14 +11,14 @@ class UpdateQuestionSlide extends Controller
 
     public function __invoke(Request $request)
     {
-        //validate request
-        $maxOrder = Slide::where('lesson_id', $request->lesson_id)->max('order');
-        if ($maxOrder == null) {
-            $maxOrder = 1;
-        }
+//        //validate request
+//        $maxOrder = Slide::where('lesson_id', $request->lesson_id)->max('order');
+//        if ($maxOrder == null) {
+//            $maxOrder = 1;
+//        }
         $request->validate([
             'slide_id' => 'required',
-            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder,],
+            'order' => ['required', 'integer', 'min:1'],
         ]);
 
         //get slide
