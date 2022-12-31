@@ -64,7 +64,11 @@ class UpdateQuestionSlide extends Controller
             $slide->title = $request->title;
 
             $answers = $slide->answers;
-            $answers->delete();
+            if ($answers != null) {
+                foreach ($answers as $answer) {
+                    $answer->delete();
+                }
+            }
 
             //create  answers
             $slide->answers()->create([
@@ -88,7 +92,11 @@ class UpdateQuestionSlide extends Controller
             $slide->title = $request->title;
 
             $answers = $slide->answers;
-            $answers->delete();
+            if ($answers != null) {
+                foreach ($answers as $answer) {
+                    $answer->delete();
+                }
+            }
 
             //create  answers
             $slide->answers()->create([
