@@ -28,7 +28,7 @@ class UpdateLessonOrder extends Controller
 //        }
 
         $request->validate([
-            'order' => ['required', 'integer', 'min:1'],
+            'order' => ['required', 'integer', 'min:1's],
         ]);
 
         //authorize request

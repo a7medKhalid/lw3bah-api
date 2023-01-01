@@ -66,11 +66,13 @@ class DatabaseSeeder extends Seeder
         $section = $course->sections()->create([
             'title' => 'Introduction',
             'description' => 'This is the introduction section',
+            'order' => 1,
         ]);
 
         $lesson = $section->lessons()->create([
             'title' => 'Introduction to Laravel',
             'description' => 'This is the introduction to Laravel lesson',
+            'order' => 1,
         ]);
 
         $slide = $lesson->slides()->create([
@@ -164,11 +166,13 @@ class DatabaseSeeder extends Seeder
         $lesson2 = $section->lessons()->create([
             'title' => 'Introduction to PHP',
             'description' => 'This is the introduction to PHP lesson',
+            'order' => 2,
         ]);
 
         $lesson3 = $section->lessons()->create([
             'title' => 'Introduction to HTML',
             'description' => 'This is the introduction to HTML lesson',
+            'order' => 3,
         ]);
 
         //enroll student in course
