@@ -21,15 +21,15 @@ class UpdateLessonOrder extends Controller
 
         $section = $lesson->section;
 
-        $maxOrder = $section->lessons()->max('order');
+//        $maxOrder = $section->lessons()->max('order');
 
-        if ($maxOrder == null){
-            $maxOrder = 1;
-        }
+//        if ($maxOrder == null){
+//            $maxOrder = 1;
+//        }
 
-        $request->validate([
-            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder],
-        ]);
+//        $request->validate([
+//            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder],
+//        ]);
 
         //authorize request
         $user = $request->user();
