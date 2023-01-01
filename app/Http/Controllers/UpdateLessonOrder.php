@@ -27,9 +27,9 @@ class UpdateLessonOrder extends Controller
 //            $maxOrder = 1;
 //        }
 
-//        $request->validate([
-//            'order' => ['required', 'integer', 'min:1', 'max:' . $maxOrder],
-//        ]);
+        $request->validate([
+            'order' => ['required', 'integer', 'min:1'],
+        ]);
 
         //authorize request
         $user = $request->user();
