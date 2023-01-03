@@ -44,8 +44,13 @@ class FinishLesson extends Controller
             $enrollment->finished_sections = array_unique(array_merge($enrollment->finished_sections, [$section->_id]));
         }
 
-        //check if user finished course
-        $finishedCourse = $course->sections()->count() == count($enrollment->finished_sections);
+        if($enrollment->finished_sections){
+            //check if user finished course
+            $finishedCourse = $course->sections()->count() == count($enrollment->finished_sections);
+        }else{
+            $finishedCourse = false;
+        }
+
 
         if($finishedCourse){
             $enrollment->is_finished = true;
