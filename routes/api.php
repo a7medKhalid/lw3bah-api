@@ -122,6 +122,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('get-profile', GetProfile::class);
 
+    Route::post('token-logout', function (Request $request) {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Logged out successfully']);
+    });
+
 });
 
 
